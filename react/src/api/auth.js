@@ -18,7 +18,21 @@ export const register = async (userData) => {
   return response.data;
 };
 
-export const logout = () => {
-  localStorage.removeItem('access_token');
-  localStorage.removeItem('refresh_token');
+export const getProfile = async () => {
+  const response = await axios.get('/api/profile/');
+  return response.data;
+};
+
+export const updateProfile = async (userData) => {
+  const response = await axios.put('/api/profile/', userData);
+  return response.data;
+};
+
+export const logout = async () => {
+  try {
+    await axios.post('/api/logout/');
+  } finally {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+  }
 };
