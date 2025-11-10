@@ -1,11 +1,11 @@
-import instance from './axios';
+import axios from './axios';
 
 export const getProfile = async () => {
-  const response = await instance.get('/api/profile/');
+  const response = await axios.get('/api/profile/');
   return response.data;
 };
 
-export const updateProfile = async (userData) => {
-  const response = await instance.put('/api/profile/', userData);
+export const updateProfile = async (data) => {
+  const response = await axios.put('/api/profile/', data);
   return response.data;
 };
